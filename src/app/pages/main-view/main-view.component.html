@@ -1,0 +1,61 @@
+<!-- <p>main-view works!</p> -->
+<div class="root">
+    <div class="navbar has-background-dark">
+        <div class="navnar-brand">
+            <div class="navbar-item">
+                <h1 class="app-name has-gradient-text">Kanban</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="board">
+        <div class="board-bar">
+            <p class="board-name">Board Name</p>
+
+
+            <input [(ngModel)]="newTask" type="text" value="" class="" style="width:300px; align-items: flex-end;">
+            <button (click)="addToList()" class="btn btn-light text-success">
+                ADD TASK
+            </button>
+
+        </div>
+        <div class="board-wrapper">
+            <div class="board-columns" cdkDropListGroup>
+                <!-- research colum area -->
+                <div class="board-column">
+                    <div class="column-title">Todo</div>
+                    <div class="tast-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="task" *ngFor="let item of todo; let index=index;" cdkDrag>{{item}}
+                            <input (click)="deleteTask(index)" type="button" value="Delete"
+                                class="col-2 btn btn-danger">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- research colum area -->
+                <div class="board-column">
+                    <div class="column-title">Research</div>
+                    <div class="task-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="research"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="task" *ngFor="let item of research" cdkDrag>{{item}}
+                        </div>
+                    </div>
+                </div>
+                <div class="board-column">
+                    <div class="column-title">InProgress</div>
+                    <div class="task-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="research"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="task" *ngFor="let item of inprogress" cdkDrag>{{item}}
+                        </div>
+                    </div>
+                </div>
+                <div class="board-column">
+                    <div class="column-title">Done</div>
+                    <div class="task-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
