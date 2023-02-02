@@ -18,6 +18,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     AppRoutingModule,
     DragDropModule,
     FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

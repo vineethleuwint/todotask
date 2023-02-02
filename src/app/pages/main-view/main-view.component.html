@@ -14,22 +14,41 @@
             <p class="board-name">Board Name</p>
 
 
-            <input [(ngModel)]="newTask" type="text" value="" class="" style="width:300px; align-items: flex-end;">
+            <!-- <input [(ngModel)]="newTask" type="text" value="" class="" style="width:300px; align-items: flex-end;">
             <button (click)="addToList()" class="btn btn-light text-success">
                 ADD TASK
-            </button>
+            </button> -->
 
         </div>
         <div class="board-wrapper">
             <div class="board-columns" cdkDropListGroup>
                 <!-- research colum area -->
                 <div class="board-column">
-                    <div class="column-title">Todo</div>
+                    <div class="column-title">Todo
+                        <!-- buttion to add next to todo -->
+
+                        <button (click)="addToListButton()" class="button is-primary is-small"
+                            style="margin-left: 180px;">+</button>
+
+                    </div>
                     <div class="tast-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
                         (cdkDropListDropped)="drop($event)">
                         <div class="task" *ngFor="let item of todo; let index=index;" cdkDrag>{{item}}
-                            <input (click)="deleteTask(index)" type="button" value="Delete"
-                                class="col-2 btn btn-danger">
+                            <!-- delet function -->
+
+                            <!-- <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+                                <mat-icon>delete</mat-icon>
+                              </button> -->
+
+                            <button (click)="deleteTask(index)" class="button is-right is-danger is-small"
+                                style="margin-left: auto;">delete</button>
+                            <!-- toedit task -->
+                            <button (click)="editTask(index)" class="button is-primary is-small"
+                                style="margin-left:5px;">edit</button>
+
+                            <!-- <input (click)=" deleteTask(index)" type="button" value="Delete"
+                                class="button is-small is-danger buttonDanger col-2"> -->
+
                         </div>
                     </div>
                 </div>
