@@ -1,26 +1,17 @@
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainViewComponent } from './pages/main-view/main-view.component';
-import { FormsModule } from '@angular/forms';
+
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { BoardComponent } from './pages/board/board.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainViewComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    DragDropModule,
-    FormsModule
-
-  ],
+  declarations: [AppComponent, MainViewComponent, BoardComponent],
+  imports: [BrowserModule, AppRoutingModule, DragDropModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
