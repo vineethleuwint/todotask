@@ -31,8 +31,9 @@ public research : string[] =[];
 public inprogress : string[] =[];
 public done : string[] =[];
 
-public newTask ="";
+//Add Functions
 
+public newTask :any="";
 public addTotodo() {
   if (this.newTask == '') {
   alert
@@ -73,9 +74,55 @@ public addTodone() {
       this.newTask = '';
   }
 }
+//Edit functions
+public edittodo(index:number)
+{
+  if (this.newTask == '') {
+    
+    alert("No changes done");
+
+  } else {
+    this.todo[index] = this.newTask;
+    this.newTask = '';
+  }
+}
+public editresearch(index:number)
+{
+  if (this.newTask == '') {
+    
+    alert("No changes done");
+
+  } else {
+    this.research[index] = this.newTask;
+    this.newTask = '';
+  }
+}
+public editinprogress(index:number)
+{
+  if (this.newTask == '') {
+    
+    alert("No changes done");
+
+  } else {
+    this.inprogress[index] = this.newTask;
+    this.newTask = '';
+  }
+}
+public editdone(index:number)
+{
+  if (this.newTask == '') {
+    
+    alert("No changes done");
+
+  } else {
+    this.done[index] = this.newTask;
+    this.newTask = '';
+  }
+}
 
 ngOnInit() {
 }
+//Drop function
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -88,6 +135,9 @@ ngOnInit() {
 
     }
   }
+
+  // Delete Functions
+
   public deletetodo(index:number) {
     this.todo.splice(index, 1);
   }
@@ -101,4 +151,5 @@ ngOnInit() {
     this.done.splice(index, 1);
   }
 }
+
 

@@ -11,13 +11,11 @@
 
 
   <div class="board">
-      <div class="board-bar">
-          <p class="board-name">TODO</p>
-
-
-          <input [(ngModel)]="newTask" type="text" value="" class="" style="width:300px; align-items: flex-end;">
-
-
+      <div class="board-bar" style="position: center;">
+          <p class="board-name" style="padding: 0 625px;">TODO</p>
+          <input placeholder="Enter Your Tasks Here" [(ngModel)]="newTask" type="text"  class="" style="margin: 0 auto;
+          margin-left: auto;
+          margin-right: auto;width:300px; align-items: flex-end; display: flex; align-self: center; border-radius:25px;">
       </div>
       <div class="board-wrapper">
           <div class="board-columns" cdkDropListGroup>
@@ -27,7 +25,8 @@
                   <div class="tast-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
                       (cdkDropListDropped)="drop($event)">
                       <div class="task" *ngFor="let item of todo; let index=index;" cdkDrag>{{item}}
-                              <i (click)="deletetodo(index)" type="button" value="d" class='fa-solid fa-trash-can' style="margin-left: auto; display: block;"></i>
+                              <i (click)="deletetodo(index)" type="button" value="d" class='fa-solid fa-trash-can' id="delete" style="margin-left: auto; display: block;"></i>
+                              <i class='fas fa-pen' (click)="edittodo(index)" id="edit"></i>
                       </div>
                   </div>
               </div>
@@ -37,7 +36,8 @@
                   <div class="task-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="research"
                       (cdkDropListDropped)="drop($event)">
                       <div class="task" *ngFor="let item of research; let index=index;" cdkDrag>{{item}}
-                          <i (click)="deleteresearch(index)" type="button" value="d" class='fa-solid fa-trash-can' style="margin-left: auto; display: block;"></i>
+                          <i (click)="deleteresearch(index)" type="button" value="d" class='fa-solid fa-trash-can' id="delete" style="margin-left: auto; display: block;"></i>
+                          <i class='fas fa-pen' (click)="editresearch(index)" id="edit" ></i>
                       </div>
                   </div>
               </div>
@@ -48,7 +48,8 @@
                     (cdkDropListDropped)="drop($event)">
                     <div class="task" *ngFor="let item of inprogress; let index=index;" cdkDrag>
                         {{item}}
-                        <i (click)="deleteinprogress(index)" type="button" value="d" class='fa-solid fa-trash-can' style="margin-left: auto; display: block;"></i>
+                        <i (click)="deleteinprogress(index)" type="button" value="d" class='fa-solid fa-trash-can' id="delete" style="margin-left: auto; display: block;"></i>
+                        <i class='fas fa-pen' (click)="editinprogress(index)" id="edit" ></i>
                     </div>
                 </div>
             </div>
@@ -59,7 +60,9 @@
                   (cdkDropListDropped)="drop($event)">
                   <div class="task" *ngFor="let item of done; let index=index;" cdkDrag>
                       {{item}}
-                      <i (click)="deletedone(index)" type="button" value="d" class='fa-solid fa-trash-can' style="margin-left: auto; display: block;"></i>
+                     <i (click)="deletedone(index)" type="button" value="d" class='fa-solid fa-trash-can' id="delete" style="margin-left: auto; display: block;"></i> 
+                        <i class='fas fa-pen' (click)="editdone(index)" id="edit" ></i>
+                      
                   </div>
               </div>
           </div>           
