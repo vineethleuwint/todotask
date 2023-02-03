@@ -28,20 +28,20 @@
                         <!-- buttion to add next to todo -->
 
                         <button (click)="addToListButton()" class="button is-primary is-small"
-                            style="margin-left: 180px;">+</button>
+                            style="margin-left:180px ;">+</button>
 
                     </div>
                     <div class="tast-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
                         (cdkDropListDropped)="drop($event)">
                         <div class="task" *ngFor="let item of todo; let index=index;" cdkDrag>{{item}}
-                            <!-- delet function -->
+
 
                             <!-- <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
                                 <mat-icon>delete</mat-icon>
                               </button> -->
 
                             <button (click)="deleteTask(index)" class="button is-right is-danger is-small"
-                                style="margin-left: auto;">delete</button>
+                                style="margin-left: auto; margin-bottom: 2px;">delete</button>
                             <!-- toedit task -->
                             <button (click)="editTask(index)" class="button is-primary is-small"
                                 style="margin-left:5px;">edit</button>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="board-column">
                     <div class="column-title">InProgress</div>
-                    <div class="task-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="research"
+                    <div class="task-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="inprogress"
                         (cdkDropListDropped)="drop($event)">
                         <div class="task" *ngFor="let item of inprogress" cdkDrag>{{item}}
                         </div>

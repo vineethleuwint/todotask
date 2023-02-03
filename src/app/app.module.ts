@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { MainViewComponent } from './pages/main-view/main-view.component';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+// import { DeleteComponent } from './pages/delete/delete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainViewComponent
+    MainViewComponent,
+    // DeleteComponent
   ],
   imports: [
     BrowserModule,

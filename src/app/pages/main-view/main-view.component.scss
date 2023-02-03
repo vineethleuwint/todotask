@@ -48,7 +48,7 @@
                 flex-direction: column;
                 flex-grow: 1;
                 flex-basis: 0;
-                
+
 
                 min-width: 200px;
                 margin: 30px;
@@ -63,6 +63,7 @@
                 }
 
                 .column-title {
+                    
                     font-size: 20px;
                     font-weight: 800;
                     font-family: 'Lato', sans-serif;
@@ -73,13 +74,15 @@
         }
     }
 }
+
 // button classes
-.dangerButton{
+.dangerButton {
     float: right;
 }
+
 .tasks-container {
     flex-grow: 1;
-    
+
 
 }
 
@@ -91,6 +94,7 @@
     border-radius: 8px;
     margin-bottom: 15px;
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.5);
+    overflow-x: auto;
 }
 
 
