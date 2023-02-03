@@ -1,59 +1,12 @@
-.board {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-
-  min-width: 0;
-  min-height: 700px;
-
-  .board-bar {
-    background: rgba($color: gray, $alpha: 0.5);
-    padding: 8px 15px;
-
-    .board-name {
-      font-size: 20px;
-      font-weight: bold;
-      color: white;
-    }
-  }
-  .board-wrapper {
-    display: flex;
-    flex-grow: 1;
-    overflow-x: auto;
-
-    .board-columns {
-      display: flex;
-      flex-grow: 1;
-
-      .board-column {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-
-        min-width: 260px;
-        margin: 50px;
-        padding: 25px;
-
-        border-radius: 8px;
-
-        background: rgba($color: white, $alpha: 0.3);
-
-        &:not(:first-child) {
-          margin-left: 0;
-        }
-        .column-title {
-          font-size: 20px;
-          font-weight: 600;
-          font-family: "Lato", sans-serif;
-          text-transform: uppercase;
-          margin-bottom: 20px;
-          align-self: center;
-        }
-      }
-    }
-  }
+.column-title {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  align-self: center;
+  justify-content: center;
 }
-
 .task-container {
   flex-grow: 1;
 }

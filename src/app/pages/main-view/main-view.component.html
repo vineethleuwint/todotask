@@ -6,7 +6,37 @@
       </div>
     </div>
   </div>
-  <!--Board Component is inserted here.-->
-  <app-board></app-board>
-  <!--  -->
+  <div class="board">
+    <div class="board-bar">
+      <p class="board-name">Board Name</p>
+    </div>
+
+    <div class="board-wrapper">
+      <div class="board-columns" cdkDropListGroup>
+        <!--Board Component is inserted here.-->
+        <div class="board-column">
+          <app-board columnName="To-Do" [listFromMainView]="todo"></app-board>
+        </div>
+        <div class="board-column">
+          <app-board
+            columnName="Research"
+            [listFromMainView]="research"
+          ></app-board>
+        </div>
+        <div class="board-column">
+          <app-board
+            columnName="In-progress"
+            [listFromMainView]="inprogress"
+          ></app-board>
+        </div>
+        <div class="board-column">
+          <app-board
+            columnName="Completed"
+            [listFromMainView]="completed"
+          ></app-board>
+        </div>
+        <!--  -->
+      </div>
+    </div>
+  </div>
 </div>

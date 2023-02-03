@@ -7,4 +7,20 @@ import { Component } from '@angular/core';
 })
 export class MainViewComponent {
   constructor() {}
+  todo: string[] = [
+    'Learn Angular',
+    'Learn Routing',
+    'Learn Cross Component Communication',
+  ];
+  research: string[] = [
+    'Kanban Board Working',
+    'Learn property binding',
+    'Add an item',
+  ];
+  inprogress: string[] = [
+    'Styling Kanban App',
+    'To add delete functionality',
+    'Pop Alert for confirmation',
+  ];
+  completed: string[] = ['Added scss', 'Dynamic Columns'];
 }

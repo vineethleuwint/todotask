@@ -1,0 +1,9 @@
+<form>
+  <input
+    type="text"
+    id="newItem"
+    [(ngModel)]="enteredInput"
+    [ngModelOptions]="{ standalone: true }"
+  />
+  <button (click)="onCreateItem()">+ Add</button>
+</form>
