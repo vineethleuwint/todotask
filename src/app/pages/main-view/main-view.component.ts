@@ -2,27 +2,53 @@ import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Board } from 'src/app/models/board.model';
 import { Column } from 'src/app/models/column.model';
+import { Tasks } from 'src/app/models/tasks.model';
+import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { Injectable } from '@angular/core';
+
 @Component({
   selector: 'app-main-view',
   templateUrl: './main-view.component.html',
   styleUrls: ['./main-view.component.scss']
 })
+@Injectable()
 export class MainViewComponent implements OnInit {
+  
+  public minDate: Date = new Date ("01/01/2023 2:00 AM");
+ 
+  public maxDate: Date = new Date ("01/01/2024 11:00 AM");
 
+  public dateValue: Date = new Date ("");
+  private storageName: string = "Settings";
   constructor() { }
 
+  
+  setSettings(data: any) {
+    localStorage.setItem(this.storageName, JSON.stringify(data));
+  }
+  clearUserSettings() {
+    localStorage.removeItem(this.storageName);
+  }
+  cleanAll() {
+    localStorage.clear()
+  }
+  getUserSettings() {
+    let data = localStorage.getItem(this.storageName);
+    return JSON.stringify(data);
+  }
+
   board: Board = new Board('Test Board', [
-    new Column('todo' , [
-      'Do Your Researches',
+    new Column('todo' , [ new Tasks('todoname' ,[]),
+      
       ]), 
-    new Column('research' , [
-    'Do Your Researches',
+    new Column('research' , [ new Tasks('researchname' ,[]),
+    
     ]),
-    new Column('inprogress' ,[
-    'Add Your Progress Here'
+    new Column('inprogress' ,[ new Tasks('inprogressname' ,[]),
+    
   ]),
-  new Column('done' , [
-    'All Events are done'
+  new Column('done' , [ new Tasks('donename' ,[]),
+    
   ])
 ]);
 
@@ -150,6 +176,56 @@ ngOnInit() {
   public deletedone(index:number) {
     this.done.splice(index, 1);
   }
+
+  //Add Name
+  public todoname : string[] =[];
+public researchname : string[] =[];
+public inprogressname : string[] =[];
+public donename : string[] =[];
+
+
+  public newTodoName :any="";
+  public newResearchName :any="";
+  public newInprogressName :any="";
+  public newDoneName :any="";
+    public TodoName() {
+      if (this.newTodoName == '') {
+      alert
+      ("Sorry no name found...Please Add A Name and Try Again");
+      }
+      else {
+          this.todoname.push(this.newTodoName);
+          this.newTodoName = '';
+      }
+    }
+    public ResearchName() {
+      if (this.newResearchName == '') {
+      alert
+      ("Sorry no name found...Please Add A Name and Try Again");
+      }
+      else {
+          this.researchname.push(this.newResearchName);
+          this.newResearchName = '';
+      }
+    }
+    public InprogressName() {
+      if (this.newInprogressName == '') {
+      alert
+      ("Sorry no name found...Please Add A Name and Try Again");
+      }
+      else {
+          this.inprogressname.push(this.newInprogressName);
+          this.newInprogressName = '';
+      }
+    }
+    public DoneName() {
+      if (this.newDoneName == '') {
+      alert
+      ("Sorry no name found...Please Add A Name and Try Again");
+      }
+      else {
+          this.donename.push(this.newDoneName);
+          this.newDoneName = '';
+      }
+    }
 }
-
-
