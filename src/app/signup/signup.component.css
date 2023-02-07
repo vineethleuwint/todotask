@@ -20,7 +20,7 @@ body{
   flex-direction: column;
   padding: 0 15px 0 15px;
   background-color:rgba(255,255,255,0.1);
-  height: 370px;
+  height: 400px;
 
 }
 span{
@@ -97,12 +97,12 @@ label a{
   margin-top: -3%;
 }
 .bottom-footer{
-  color:aliceblue;
-  margin-top: 20px;
+ color:aliceblue;
+ margin-top: 20px;
 
- }
- a{
-   color:rgb(234, 231, 231);
-  
+}
+a{
+  color:rgb(234, 231, 231);
+  margin-left: 160px;
 
- }
+}
