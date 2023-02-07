@@ -26,25 +26,37 @@
       <div class="board-wrapper">
           <div class="board-columns" cdkDropListGroup>
               <div class="board-column">
+                
                   <div class="column-title">Todo
-                        <button mat-raised-button (click)="openTodoDialog()">Add Your Name</button>
-                      <li *ngIf="name">
-                        <i>{{name}}</i>
-                      </li>
+                    <ol>
+                        <li>
+                          <mat-form-field>
+                            <input matInput [(ngModel)]="name" placeholder="What's your name?">
+                          </mat-form-field>
+                        </li>
+                        <li>
+                          <button mat-raised-button (click)="openDialog()">Pick one</button>
+                        </li>
+                        <li *ngIf="animal">
+                          You chose: <i>{{animal}}</i>
+                        </li>
+                      </ol>
                     <input placeholder="Enter Your Name Here" [(ngModel)]="newTodoName" type="text"  class="" style="margin: 0 auto;
           margin-left: auto;
           margin-right: auto;width:300px; align-items: flex-end; display: flex; align-self: center; border-radius:25px;">
                 <button (click)="addTotodo()" class="btn btn-light text-success" >+</button>  
                 </div>
+                  
+                  
                   <div class="tast-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
                       (cdkDropListDropped)="drop($event)">
-                      <div class="task"  *ngFor="let item of todo; let index=index;" cdkDrag>
+                      <div class="task" *ngFor="let item of todo; let index=index;" cdkDrag>
                         <i class="fa fa-user" (click)="TodoName()" aria-hidden="true" ></i>
                         {{item}}
                      <ejs-datetimepicker id='datetimepicker' placeholder='Select a date' [value]='dateValue' [min]='minDate' [max]='maxDate'></ejs-datetimepicker>
                               <i (click)="deletetodo(index)" type="button" value="d" class='fa-solid fa-trash-can' id="delete" style="margin-left: auto; display: block;"></i>
                               <i class='fas fa-pen' (click)="edittodo(index)" id="edit"></i>
-                               <div class="name"  *ngFor="let items of todoname">
+                               <div class="name" *ngFor="let items of todoname">
                                 {{items}}
                               </div>   
                       </div>
@@ -52,10 +64,6 @@
               </div>
               <div class="board-column">
                   <div class="column-title">Research
-                    <button mat-raised-button (click)="openResearchDialog()">Add Your Name</button>
-                    <li *ngIf="name">
-                      <i>{{name}}</i>
-                    </li>
                     <input placeholder="Enter Your Name Here" [(ngModel)]="newResearchName" type="text"  class="" style="margin: 0 auto;
           margin-left: auto;
           margin-right: auto;width:300px; align-items: flex-end; display: flex; align-self: center; border-radius:25px;">
@@ -79,10 +87,6 @@
               </div>
               <div class="board-column">
                 <div class="column-title">InProgress
-                  <button mat-raised-button (click)="openInprogressDialog()">Add Your Name</button>
-                  <li *ngIf="name">
-                    <i>{{name}}</i>
-                  </li>
                     <input placeholder="Enter Your Name Here" [(ngModel)]="newInprogressName" type="text"  class="" style="margin: 0 auto;
           margin-left: auto;
           margin-right: auto;width:300px; align-items: flex-end; display: flex; align-self: center; border-radius:25px;">
@@ -107,10 +111,6 @@
             </div>
             <div class="board-column">
               <div class="column-title">Done
-                <button mat-raised-button (click)="openDoneDialog()">Add Your Name</button>
-                <li *ngIf="name">
-                  <i>{{name}}</i>
-                </li>
                 <input placeholder="Enter Your Name Here" [(ngModel)]="newDoneName" type="text"  class="" style="margin: 0 auto;
           margin-left: auto;
           margin-right: auto;width:300px; align-items: flex-end; display: flex; align-self: center; border-radius:25px;">
@@ -128,7 +128,7 @@
                     <i class='fas fa-pen' (click)="editdone(index)" id="edit" ></i>   
                     <div class="name" *ngFor="let items of donename">
                         {{items}}
-                      </div> 
+                    </div> 
                   </div>
               </div>
           </div>           
@@ -136,3 +136,5 @@
       </div>
   </div>
 </div>
+<style>
+</style>

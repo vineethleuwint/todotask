@@ -1,15 +1,11 @@
-import { Component, OnInit ,Inject} from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Board } from 'src/app/models/board.model';
 import { Column } from 'src/app/models/column.model';
 import { Tasks } from 'src/app/models/tasks.model';
+import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { Injectable } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog'
 
-export interface DialogData {
-  name: string;
-  
-}
 @Component({
   selector: 'app-main-view',
   templateUrl: './main-view.component.html',
@@ -17,60 +13,29 @@ export interface DialogData {
 })
 @Injectable()
 export class MainViewComponent implements OnInit {
-  public name: string="";
-  
-
   
   public minDate: Date = new Date ("01/01/2023 2:00 AM");
  
   public maxDate: Date = new Date ("01/01/2024 11:00 AM");
 
   public dateValue: Date = new Date ("");
+  private storageName: string = "Settings";
+  constructor() { }
 
-  //Add name from Dialog
-  constructor(public dialog:MatDialog) { }
-
-  openTodoDialog(): void { 
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, { width:'350px',
-      data: {name: this.name},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.name = result;
-    });
+  
+  setSettings(data: any) {
+    localStorage.setItem(this.storageName, JSON.stringify(data));
   }
-  openResearchDialog(): void { 
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, { width:'350px',
-      data: {name: this.name},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.name = result;
-    });
+  clearUserSettings() {
+    localStorage.removeItem(this.storageName);
   }
-  openInprogressDialog(): void { 
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, { width:'350px',
-      data: {name: this.name},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.name = result;
-    });
+  cleanAll() {
+    localStorage.clear()
   }
-  openDoneDialog(): void { 
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, { width:'350px',
-      data: {name: this.name},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.name = result;
-    });
+  getUserSettings() {
+    let data = localStorage.getItem(this.storageName);
+    return JSON.stringify(data);
   }
-
 
   board: Board = new Board('Test Board', [
     new Column('todo' , [ new Tasks('todoname' ,[]),
@@ -263,18 +228,4 @@ public donename : string[] =[];
           this.newDoneName = '';
       }
     }
-}
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
-})
-export class DialogOverviewExampleDialog {
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 }
