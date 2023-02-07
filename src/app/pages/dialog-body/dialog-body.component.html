@@ -1,0 +1,18 @@
+<button mat-icon-button style="float: right; margin: 5px;" mat-dialog-close="">
+    <mat-icon>close</mat-icon>
+</button>
+<mat-dialog-content>
+    <header>
+        <h1>Event Entry</h1>
+    </header>
+    <p>
+        <mat-form-field><input matInput place="text" placeholder="Name">
+            <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary">save</button>
+    <button mat-raised-button color="warn" mat-dialog-close="">cancel
+    </button>
+</mat-dialog-actions>

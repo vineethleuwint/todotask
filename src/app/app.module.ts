@@ -7,20 +7,36 @@ import { AppComponent } from './app.component';
 import { MainViewComponent } from './pages/main-view/main-view.component';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-// import { DeleteComponent } from './pages/delete/delete.component';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+// import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogBodyComponent } from './pages/dialog-body/dialog-body.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainViewComponent,
-    // DeleteComponent
+    DialogBodyComponent,
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DragDropModule,
-    FormsModule
-
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    // DialogBodyComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

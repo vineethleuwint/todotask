@@ -4,6 +4,7 @@
         <div class="navnar-brand">
             <div class="navbar-item">
                 <h1 class="app-name has-gradient-text">Kanban</h1>
+
             </div>
         </div>
     </div>
@@ -12,8 +13,7 @@
     <div class="board">
         <div class="board-bar">
             <p class="board-name">Board Name</p>
-
-
+            <!-- old model input function -->
             <!-- <input [(ngModel)]="newTask" type="text" value="" class="" style="width:300px; align-items: flex-end;">
             <button (click)="addToList()" class="btn btn-light text-success">
                 ADD TASK
@@ -26,33 +26,35 @@
                 <div class="board-column">
                     <div class="column-title">Todo
                         <!-- buttion to add next to todo -->
+                        <!-- <button (click)="addToListButton()" class="button is-primary is-small"
+                            style="margin-left:180px ;">+</button> -->
 
-                        <button (click)="addToListButton()" class="button is-primary is-small"
-                            style="margin-left:180px ;">+</button>
+                        <!-- popup button -->
+                        <!-- <app-dialog-body [fromMainViesList]="todo"></app-dialog-body> -->
+                        <!-- <mat-dialog-actions > -->
+                            
+                            <button (click)="openDialog()" >hello</button>
+                        <!-- </mat-dialog-actions> -->
+                        <button color="primary" (click)="addToListButton()" class="button is-primary is-small"
+                                style="margin-left:180px ;">+</button>
 
                     </div>
                     <div class="tast-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
                         (cdkDropListDropped)="drop($event)">
                         <div class="task" *ngFor="let item of todo; let index=index;" cdkDrag>{{item}}
-
-
-                            <!-- <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
-                                <mat-icon>delete</mat-icon>
-                              </button> -->
-
-                            <button (click)="deleteTask(index)" class="button is-right is-danger is-small"
-                                style="margin-left: auto; margin-bottom: 2px;">delete</button>
-                            <!-- toedit task -->
-                            <button (click)="editTask(index)" class="button is-primary is-small"
-                                style="margin-left:5px;">edit</button>
-
-                            <!-- <input (click)=" deleteTask(index)" type="button" value="Delete"
-                                class="button is-small is-danger buttonDanger col-2"> -->
-
+                            <div class="hoverButton" style="margin-left:auto">
+                                <!-- button for deleting task -->
+                                <button (click)="deleteTask(index)"
+                                    class="button is-right is-danger is-small ">delete</button>
+                                <!-- style="margin-left: auto; margin-bottom: 2px;" -->
+                                <!-- toedit task -->
+                                <button (click)="editTaskTodo(index)" class="button is-primary is-small"
+                                    style="margin-left: 5px;">edit</button>
+                                <!-- style="margin-left:5px; -->
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- research colum area -->
                 <div class="board-column">
                     <div class="column-title">Research</div>
@@ -62,6 +64,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- progress column area -->
                 <div class="board-column">
                     <div class="column-title">InProgress</div>
                     <div class="task-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="inprogress"
@@ -70,9 +73,14 @@
                         </div>
                     </div>
                 </div>
+                <!-- done column area -->
                 <div class="board-column">
                     <div class="column-title">Done</div>
-                    <div class="task-container"></div>
+                    <div class="task-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="done"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="task" *ngFor="let item of done" cdkDrag>{{item}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

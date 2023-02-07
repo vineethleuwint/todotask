@@ -1,5 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { __values } from 'tslib';
+import { Component, OnInit,inject } from '@angular/core';
 import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
+import { MatDialog } from '@angular/material/dialog';
+
+
+
+
+
+// import { MainViewComponent } from './pages/main-view/main-view.component';
 // import { Board } from 'src/app/models/board.model';
 // import { Column } from 'src/app/models/column.model';
 @Component({
@@ -7,35 +16,38 @@ import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from 
   templateUrl: './main-view.component.html',
   styleUrls: ['./main-view.component.scss']
 })
-export class MainViewComponent implements OnInit {
+// export class AppComponent {
+//   title = 'angular-dialog';
+//   constructor(private MatDialog: MatDialog) { }
+//   openDialog() {
+//     this.MatDialog.open(DialogBodyComponent, {
+//       width: '350px',
+//     })
+
+//   }
+// }
+
+export class MainViewComponent {
   ngOnInit() {
 
   }
-  // constructor() {
+ 
+  constructor(private matDialog: MatDialog) {}
+  openDialog(){
+    this.matDialog.open(DialogBodyComponent, {
+      width: '350px',
+    })
 
-  // }
-  // board: Board = new Board('Test Board', [
-  //   new Column('todo', [
-
-  //   ]),
-  //   new Column('research', [
-  //   ]),
-  //   new Column('inprogress', [
-  //   ]),
-  //   new Column('done', [
-  //   ])
-  // ]);
-
+  }
+ 
+inject(){}
 
   public todo: any[] = ['hello'];
-  public inprogress: any[] = ["hello"];
-  public done: any[] = [];
+  public inprogress: any[] = ['prompt'];
+  public research: any[] = ['view'];
+  public done: any[] = ['done'];
   //temporary variable to 
   public newTask: any = '';
-
-
-
-
 
   // initial adding task at the begining remove because button for add task is applied to todo column
 
@@ -47,10 +59,8 @@ export class MainViewComponent implements OnInit {
 
   // }
 
-
-
   // editing task for the same item/index
-  public editTask(index: number) {
+  public editTaskTodo(index: number) {
 
     var found: any = this.todo.slice(index, index + 1);
     this.newTask = prompt("edit your task: ", found);
@@ -64,11 +74,16 @@ export class MainViewComponent implements OnInit {
     }
 
   }
-
-  // added buttion to the side of todo prompt function
+  // popup
+  // constructor(private matDialog: MatDialog) { }
+  // addToListButton() {
+  //   this.matDialog.open(MainViewComponent, { width: '350px', })
+  // }
+ 
+  
   public addToListButton() {
     // properlly working as expected dont touch anything on this
-    // 
+    
     this.newTask = prompt("Enter Your Todo Task:");
     if (this.newTask == "" || this.newTask == null) {
       return;
@@ -79,12 +94,8 @@ export class MainViewComponent implements OnInit {
   }
 
 
+  // added buttion to the side of todo prompt function
 
-
-
-  // todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-
-  research = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {

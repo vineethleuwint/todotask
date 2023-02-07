@@ -63,7 +63,7 @@
                 }
 
                 .column-title {
-                    
+
                     font-size: 20px;
                     font-weight: 800;
                     font-family: 'Lato', sans-serif;
@@ -117,4 +117,14 @@
 
 .tasks-container.cdk-drop-list-dragging .task:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.hoverButton {
+    opacity: 0.1;
+    transition: 0.5s;
+}
+
+.hoverButton:hover {
+    opacity: 1;
+    transition: 0.5s;
 }
