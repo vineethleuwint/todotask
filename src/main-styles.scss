@@ -16,11 +16,13 @@ body {
 html,
 body {
     height: 100%;
+    
+    background-color: #403E3E;
 }
 
 html {
-    background-image: url('./assets/liquid-cheese\ \(1\).svg');
+    // background-image: url('./assets/liquid-cheese\ \(1\).svg');
     background-size: cover;
-
+    // color: #403E3E;
     overflow-y: auto !important;
 }

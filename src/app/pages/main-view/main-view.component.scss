@@ -8,12 +8,21 @@
     font-size: 28px;
     font-family: 'Lato', sans-serif;
     font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10Px;
+
 }
 
 .has-gradient-text {
     background: -webkit-linear-gradient(#13f7f4, #2af598);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+// place holder align the text inside 
+input[type=text] {
+    text-align: center;
 }
 
 .board {
@@ -23,16 +32,6 @@
     min-width: 0;
     min-height: 0;
 
-    .board-bar {
-        background: rgba(grey, 0.5);
-        padding: 8px 15px;
-
-        .board-name {
-            font-size: 20px;
-            font-weight: bold;
-            color: white;
-        }
-    }
 
     .board-wrapper {
         display: flex;
@@ -56,19 +55,20 @@
 
                 border-radius: 8px;
 
-                background: rgba(white, 0.5);
+                background: #2d2828;
 
                 &:not(:first-child) {
                     margin-left: 0;
                 }
 
                 .column-title {
-
+                    // task heading todo research name class stylining
                     font-size: 20px;
                     font-weight: 800;
                     font-family: 'Lato', sans-serif;
                     text-transform: uppercase;
                     margin-bottom: 20px;
+                    color: #fff;
                 }
             }
         }
@@ -127,4 +127,19 @@
 .hoverButton:hover {
     opacity: 1;
     transition: 0.5s;
+}
+
+.inputTask {
+    align-items: center;
+}
+
+.board-bar {
+    background: rgba(grey, 0.5);
+    padding: 8px 15px;
+
+    .board-name {
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+    }
 }

@@ -1,3 +1,4 @@
+// import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,13 +18,18 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogBodyComponent } from './pages/dialog-body/dialog-body.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { PopupComponent } from './pages/popup/popup.component';
+import { DatetimeComponent } from './pages/datetime/datetime.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
     MainViewComponent,
     DialogBodyComponent,
-   
+    PopupComponent,
+    DatetimeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -36,6 +42,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatDialogModule,
     BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatMenuModule
+
+
     // DialogBodyComponent
   ],
   providers: [],
