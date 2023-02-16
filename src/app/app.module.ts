@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +18,13 @@ import { AddInputComponent } from './pages/add-input/add-input.component';
     BoardComponent,
     AddInputComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, DragDropModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    DragDropModule,
+    FormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

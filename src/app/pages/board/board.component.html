@@ -1,4 +1,12 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
 <div class="column-title">{{ columnName }}</div>
+<app-add-input (itemTransfer)="onItemCreated($event)"></app-add-input>
 <div
   class="tasks-container"
   cdkDropList
@@ -6,8 +14,14 @@
   class="example-list"
   (cdkDropListDropped)="drop($event)"
 >
-  <div class="task" *ngFor="let item of listFromMainView" cdkDrag>
+  <div
+    class="task"
+    *ngFor="let item of listFromMainView; let index = index"
+    cdkDrag
+  >
     {{ item }}
+    <div class="trash-icon">
+      <i (click)="onItemDelete(index)" class="fa-solid fa-trash"></i>
+    </div>
   </div>
-  <app-add-input (itemTransfer)="onItemCreated($event)"></app-add-input>
 </div>

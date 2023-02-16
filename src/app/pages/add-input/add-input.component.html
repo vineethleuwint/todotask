@@ -1,9 +1,12 @@
-<form>
+<form #itemForm="ngForm" (ngSubmit)="onCreateAndPostItem(itemForm.value)">
+  <label for="itemName">Item:</label>
   <input
-    type="text"
-    id="newItem"
     [(ngModel)]="enteredInput"
-    [ngModelOptions]="{ standalone: true }"
+    class="input-field"
+    type="text"
+    ngModel
+    name="itemName"
+    id="newItem"
   />
-  <button (click)="onCreateItem()">+ Add</button>
+  <button>+</button>
 </form>

@@ -1,6 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { Board } from 'src/app/models/board.model';
-import { Column } from 'src/app/models/column.model';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -13,13 +11,14 @@ import {
   styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent {
-  @Input() columnName: string;
   constructor() {
     this.columnName = '';
   }
 
+  @Input() columnName: string;
   @Input() listFromMainView: string[];
 
+  //Drag and drop functionalties.
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
@@ -38,6 +37,16 @@ export class BoardComponent {
   }
 
   onItemCreated(itemName: string) {
-    this.listFromMainView.push(itemName);
+    if (itemName === '') {
+      alert('No Text Found.');
+    } else {
+      this.listFromMainView.push(itemName);
+    }
+
+    console.log(this.listFromMainView);
+  }
+
+  onItemDelete(index: number) {
+    this.listFromMainView.splice(index, 1);
   }
 }
