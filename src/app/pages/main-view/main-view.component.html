@@ -1,73 +1,55 @@
 <!-- <p>main-view works!</p> -->
 <div class="root">
     <h1 class="app-name has-gradient-text">ToDoTask</h1>
-    <!-- <div class="navbar has-background-dark">
-        <div class="navnar-brand">
-            <div class="navbar-item">
-
-            </div>
-        </div>
-    </div> -->
-
 
     <div class="board">
         <div class="board-bar">
-            <!-- <p class="board-name">Board Name</p> -->
+
             <!-- old model input function -->
             <input [(ngModel)]="newTask" type="text" value="" placeholder="Enter Your Task" class="input" style="width:300px; 
                 margin-left: auto; margin-right: auto;
                  width:300px; display: flex;">
-
-            <!-- <button (click)="addToList()" class="btn btn-light text-success">ADD TASK</button> -->
-
         </div>
         <div class="board-wrapper">
             <div class="board-columns" cdkDropListGroup>
                 <!-- research colum area -->
                 <div class="board-column">
-                    <div class="column-title">Todo
-                        <!-- buttion to add next to todo -->
-                        <!-- <button (click)="addToListButton()" class="button is-primary is-small"
-                            style="margin-left:180px ;">+</button> -->
 
-                        <!-- popup button -->
-                        <!-- <app-dialog-body [fromMainViesList]="todo"></app-dialog-body> -->
-                        <!-- <mat-dialog-actions> -->
-                        <!-- <app-dialog-body></app-dialog-body> -->
-
-                        <!-- 
-                        <a class="button" routerLink="/pop-up" routerLinkActive="activebutton"
-                            ariaCurrentWhenActive="page">
-                            Add Task
-                        </a> -->
-                        <!-- button for popup -->
-                        <!-- <button (click)="openDialog()">hello</button> -->
-                        <!-- </mat-dialog-actions> -->
-
-                        <!-- button added for recent add -->
-                        <!-- <button color="primary" (click)="addToListButton()" class="button is-primary is-small"
-                            style="margin-left:180px ;">+</button> -->
-
+                    <div class="column-title"> Todo
                         <!-- final design model button along with the todo task -->
+
                         <button (click)="addToListTodo()" class="button is-primary is-small"
-                            style="margin-left: 190px;">+</button>
+                            style="margin-left:190px;">+</button>
                     </div>
                     <div class=" tast-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
                         (cdkDropListDropped)="drop($event)">
                         <div class="task" *ngFor="let item of todo; let index=index;" cdkDrag>{{item}}
 
-                            <div class="hoverButton" style="margin-left:auto">
-                                <!-- button for deleting task -->
+                            
+
+                            <!-- <input [matDatepicker]="" class="date-cl"> -->
+
+                            <button mat-button [matMenuTriggerFor]="menu" style="margin-left: auto;">Menu</button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="deleteTask(index)">Delet Task</button>
+                                <button mat-menu-item (click)="editTaskTodo(index)">Edit Task</button>
+                                <button mat-menu-item></button>
+
+                            </mat-menu>
+
+
+                            <!--  <div class="hoverButton" style="margin-left:auto">
                                 <button (click)="deleteTask(index)"
                                     class="button is-right is-danger is-small ">Delete</button>
-                                <!-- style="margin-left: auto; margin-bottom: 2px;" -->
-                                <!-- toedit task -->
-                                <button (click)="editTaskTodo(index)" class="button is-primary is-small"
+                                <button  class="button is-primary is-small"
                                     style="margin-left: 5px;">Edit</button>
-                                <!-- style="margin-left:5px; -->
-                                <!-- function for calender not defined -->
                                 <button class="button is-info is-small" style="margin-left: 5px;">Calender</button>
-                            </div>
+                            </div> -->
+
+
+
+
+
                             <!-- <app-datetime></app-datetime> -->
                         </div>
                     </div>
