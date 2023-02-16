@@ -1,0 +1,167 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="root">
+  <div class="board">
+      <div class="board-bar" style="position: center;">
+          <p class="board-name" style="display: flex; align-self: center;">TODO</p>
+          <input placeholder="Enter Your Tasks Here" [(ngModel)]="newTask" type="text"  class="" style="margin: 0 auto;
+          margin-left: auto;
+          margin-right: auto;width:300px; align-items: flex-end; display: flex; align-self: center; border-radius:25px;">
+      </div>
+      <div class="board-wrapper">
+          <div class="board-columns" cdkDropListGroup>
+              <div class="board-column">
+                  <div class="column-title">Todo               
+              </div>
+                <button (click)="addTotodo()" class="btn btn-light text-success" >+</button>  
+                  <div class="tast-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+                      (cdkDropListDropped)="drop($event)">
+                      <div class="task"  *ngFor="let item of todo; let index=index;" cdkDrag >
+                      <h1 class="item-cl">{{item}}</h1>
+                        <sub *ngFor="let name of todoname; let i=index;" class="name-cl">{{name}}</sub>
+                        <input [matDatepicker]="picker" class="date-cl">
+                        <mat-datepicker #picker style="background:lightblue;"></mat-datepicker>   
+                        <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-cl">
+                                <mat-icon>view_headline</mat-icon>
+                        </button>
+                              <mat-menu #menu="matMenu" class="menu">
+                                <button (click)="openTodoDialog(index)" mat-menu-item>
+                                  <mat-icon>mood</mat-icon>
+                                  <span>Name</span>
+                                </button>
+                                <button (click)="edittodo(index)" mat-menu-item>
+                                  <mat-icon>create</mat-icon>
+                                  <span>Edit</span>
+                                </button>
+                                <button (click)="deletetodo(index)" mat-menu-item>
+                                  <mat-icon>delete</mat-icon>
+                                  <span>Delete</span>
+                                </button>
+                                <button mat-menu-item>                      
+                                  <mat-datepicker-toggle [for]="picker">
+                                  <mat-icon>calendar-today</mat-icon>
+                                  </mat-datepicker-toggle>
+                                  <span>Pick A Date</span>
+                                  <mat-datepicker #picker></mat-datepicker>
+                                  </button>
+                              </mat-menu>
+                      </div>    
+                  </div>
+              </div>
+              <div class="board-column">
+                  <div class="column-title">Research                 
+                </div>
+                <button (click)="addToresearch()" class="btn btn-light text-success">+</button>  
+                  <div class="task-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="research"
+                      (cdkDropListDropped)="drop($event)" >
+                      <div class="task" *ngFor="let item of research; let index=index;" cdkDrag >
+                        <h1 class="item-cl">{{item}}</h1>
+                        <sub *ngFor="let name of researchname; let i=index;" class="name-cl">{{name}}</sub>
+                        <input [matDatepicker]="picker" class="date-cl" style="width:100px;height: 15px;position:fixed;margin-left: 125px;">
+                        <mat-datepicker #picker style="background:lightblue;"></mat-datepicker>   
+                              <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-cl" style="color:white;position: fixed;margin-top: 20px;margin-left: 180px;">
+                                <mat-icon>view_headline</mat-icon>
+                              </button>
+                              <mat-menu #menu="matMenu" class="menu">
+                                <button (click)="openResearchDialog(index)" mat-menu-item>
+                                  <mat-icon>mood</mat-icon>
+                                  <span>Name</span>
+                                </button>
+                                <button (click)="editresearch(index)" mat-menu-item>
+                                  <mat-icon>create</mat-icon>
+                                  <span>Edit</span>
+                                </button>
+                                <button (click)="deleteresearch(index)" mat-menu-item>
+                                  <mat-icon>delete</mat-icon>
+                                  <span>Delete</span>
+                                </button>
+                                <button mat-menu-item>                      
+                                  <mat-datepicker-toggle [for]="picker" style="align-self:self-start;">
+                                  <mat-icon>calendar-today</mat-icon>
+                                  </mat-datepicker-toggle>
+                                  <span>Pick A Date</span>
+                                  <mat-datepicker #picker></mat-datepicker>
+                                  </button>
+                              </mat-menu>
+                      </div>
+                  </div>
+              </div>
+              <div class="board-column">
+                <div class="column-title">InProgress   
+            </div> 
+            <button (click)="addToinprogress()" class="btn btn-light text-success">+</button> 
+                <div class="task-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="inprogress"
+                    (cdkDropListDropped)="drop($event)">
+                    <div class="task" *ngFor="let item of inprogress; let index=index;" cdkDrag>
+                      <h1 class="item-cl">{{item}}</h1>
+                      <sub *ngFor="let name of inprogressname; let i=index;" class="name-cl">{{name}}</sub>
+                      <input [matDatepicker]="picker" class="date-cl">
+                      <mat-datepicker #picker style="background:lightblue;"></mat-datepicker>   
+                            <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-cl">
+                              <mat-icon>view_headline</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu" class="menu">
+                              <button (click)="openInprogressDialog(index)" mat-menu-item>
+                                <mat-icon >mood</mat-icon>
+                                <span>Name</span>
+                              </button>
+                              <button (click)="editinprogress(index)" mat-menu-item>
+                                <mat-icon >create</mat-icon>
+                                <span>Edit</span>
+                              </button>
+                              <button (click)="deleteinprogress(index)" mat-menu-item>
+                                <mat-icon>delete</mat-icon>
+                                <span>Delete</span>
+                              </button>
+                              <button mat-menu-item>                      
+                                <mat-datepicker-toggle [for]="picker" style="align-self:self-start;">
+                                <mat-icon>calendar-today</mat-icon>
+                                </mat-datepicker-toggle>
+                                <span>Pick A Date</span>
+                                <mat-datepicker #picker></mat-datepicker>
+                                </button>
+                            </mat-menu>
+                    </div>
+                </div>
+            </div>
+            <div class="board-column">
+              <div class="column-title">Done  
+            </div> 
+            <button (click)="addTodone()" class="btn btn-light text-success">+</button>
+              <div class="task-container" cdkDropList #todoList="cdkDropList" [cdkDropListData]="done"
+                  (cdkDropListDropped)="drop($event)">
+                  <div class="task" *ngFor="let item of done; let index=index;" cdkDrag>
+                    <h1 class="item-cl">{{item}}</h1>
+                      <sub *ngFor="let name of donename; let i=index;" class="name-cl">{{name}}</sub> 
+                      <input matInput [matDatepicker]="picker" class="date-cl">
+                      <mat-datepicker #picker style="background:lightblue;"></mat-datepicker>
+                    <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-cl">
+                      <mat-icon>view_headline</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu" class="user-menu">
+                      <button (click)="openDoneDialog(index)" mat-menu-item>
+                        <mat-icon>mood</mat-icon>
+                        <span>Name</span>
+                      </button>
+                      <button (click)="editdone(index)" mat-menu-item>
+                        <mat-icon>create</mat-icon>
+                        <span>Edit</span>
+                      </button>
+                      <button (click)="deletedone(index)" mat-menu-item>
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                      </button>
+                      <button mat-menu-item>                      
+                      <mat-datepicker-toggle [for]="picker" style="align-self:self-start;">
+                      <mat-icon>calendar-today</mat-icon>
+                      </mat-datepicker-toggle>
+                      <span>Pick A Date</span>
+                      <mat-datepicker #picker></mat-datepicker>
+                      </button>
+                    </mat-menu>
+                  </div>
+              </div>
+          </div>           
+          </div>
+      </div>
+  </div>
+</div>
